@@ -1,6 +1,6 @@
 package main
 
-import einfo "github.com/euskadi31/einfo-go"
+import einfo "github.com/euskadi31/go-einfo"
 
 func main() {
 	einfo.Info("test info")

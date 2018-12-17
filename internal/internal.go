@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/euskadi31/einfo-go/colors"
-	"github.com/euskadi31/einfo-go/terminal"
+	"github.com/euskadi31/go-einfo/colors"
+	"github.com/euskadi31/go-einfo/terminal"
 )
 
 type EColor int

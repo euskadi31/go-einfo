@@ -3,7 +3,7 @@ package einfo
 import (
 	"os"
 
-	"github.com/euskadi31/einfo-go/internal"
+	"github.com/euskadi31/go-einfo/internal"
 )
 
 func Info(format string, a ...interface{}) {
