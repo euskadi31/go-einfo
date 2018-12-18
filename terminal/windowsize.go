@@ -6,6 +6,7 @@ import (
 	"unsafe"
 )
 
+// WindowSize struct
 type WindowSize struct {
 	Row    uint16
 	Col    uint16
@@ -13,6 +14,7 @@ type WindowSize struct {
 	Ypixel uint16
 }
 
+// GetWindowSize from term
 func GetWindowSize(f *os.File) (*WindowSize, error) {
 	ws := &WindowSize{}
 

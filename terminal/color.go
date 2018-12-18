@@ -50,6 +50,7 @@ var (
 	}
 )
 
+// IsColor check if term is support color
 func IsColor(f *os.File) bool {
 	if !isatty.IsTerminal(f.Fd()) {
 		return false

@@ -9,8 +9,10 @@ import (
 	"github.com/euskadi31/go-einfo/terminal"
 )
 
+// EColor type
 type EColor int
 
+// EColor enums
 const (
 	EColorNormal EColor = iota
 	EColorGood
@@ -20,6 +22,7 @@ const (
 	EColorBracket
 )
 
+// constants
 const (
 	EOk    = "ok"
 	ENotOk = "!!"
@@ -38,6 +41,7 @@ var (
 	termIsCons25 = false
 )
 
+// Color string
 func Color(f *os.File, color EColor) string {
 	if !terminal.IsColor(f) {
 		return ""
@@ -69,12 +73,11 @@ func end(f *os.File, col int, color EColor, msg string) {
 		return
 	}
 
-	windowSize, err := terminal.GetWindowSize(f)
-	if err != nil {
+	if windowSize, err := terminal.GetWindowSize(f); err != nil {
 		cols = 80
+	} else {
+		cols = int(windowSize.Col) - (len(msg) + 5)
 	}
-
-	cols = int(windowSize.Col) - (len(msg) + 5)
 
 	if term == "" {
 		term = os.Getenv("TERM")
@@ -113,12 +116,14 @@ func end(f *os.File, col int, color EColor, msg string) {
 	}
 }
 
+// Info formatter
 func Info(f *os.File, color EColor, format string, a ...interface{}) {
 	info(f, color, format, a...)
 
 	fmt.Fprint(f, "\n")
 }
 
+// Begin formatter
 func Begin(f *os.File, color EColor, format string, a ...interface{}) {
 	info(f, color, format, a...)
 
@@ -126,11 +131,11 @@ func Begin(f *os.File, color EColor, format string, a ...interface{}) {
 	fmt.Fprint(f, "\n")
 }
 
-func DoEnd(cmd string, status bool, format string, a ...interface{}) {
+// DoEnd formatter
+func DoEnd(f *os.File, cmd string, status bool, format string, a ...interface{}) {
 	col := 0
-	f := os.Stdout
 
-	if format != "" && status == false {
+	if format != "" && !status {
 		f = os.Stderr
 
 		if strings.Compare(cmd, "ewend") == 0 {
@@ -147,7 +152,7 @@ func DoEnd(cmd string, status bool, format string, a ...interface{}) {
 	color := EColorGood
 	msg := EOk
 
-	if status == false {
+	if !status {
 		color = EColorBad
 		msg = ENotOk
 	}
