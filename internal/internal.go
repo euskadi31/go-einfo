@@ -136,8 +136,6 @@ func DoEnd(f *os.File, cmd string, status bool, format string, a ...interface{})
 	col := 0
 
 	if format != "" && !status {
-		f = os.Stderr
-
 		if strings.Compare(cmd, "ewend") == 0 {
 			col = info(f, EColorWarn, format, a...)
 		} else {
