@@ -1,5 +1,7 @@
 module github.com/euskadi31/go-einfo
 
+go 1.20
+
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/mattn/go-isatty v0.0.19
