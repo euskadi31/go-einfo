@@ -6,7 +6,7 @@ import (
 	"github.com/euskadi31/go-einfo/internal"
 )
 
-// Output default output
+// Output default output.
 var Output = os.Stdout
 
 // Info print log to standard output. Arguments are handled in the manner of fmt.Print.

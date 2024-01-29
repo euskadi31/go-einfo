@@ -9,10 +9,10 @@ import (
 	"github.com/euskadi31/go-einfo/terminal"
 )
 
-// EColor type
+// EColor type.
 type EColor int
 
-// EColor enums
+// EColor enums.
 const (
 	EColorNormal EColor = iota
 	EColorGood
@@ -22,7 +22,7 @@ const (
 	EColorBracket
 )
 
-// constants
+// constants.
 const (
 	EOk    = "ok"
 	ENotOk = "!!"
@@ -41,7 +41,7 @@ var (
 	termIsCons25 = false
 )
 
-// Color string
+// Color string.
 func Color(f *os.File, color EColor) string {
 	if !terminal.IsColor(f) {
 		return ""
@@ -57,7 +57,7 @@ func info(f *os.File, color EColor, format string, a ...interface{}) int {
 
 	length += n
 
-	//@TODO indent
+	// @TODO indent
 
 	n, _ = fmt.Fprintf(f, format, a...)
 
@@ -116,14 +116,14 @@ func end(f *os.File, col int, color EColor, msg string) {
 	}
 }
 
-// Info formatter
+// Info formatter.
 func Info(f *os.File, color EColor, format string, a ...interface{}) {
 	info(f, color, format, a...)
 
 	fmt.Fprint(f, "\n")
 }
 
-// Begin formatter
+// Begin formatter.
 func Begin(f *os.File, color EColor, format string, a ...interface{}) {
 	info(f, color, format, a...)
 
@@ -131,7 +131,7 @@ func Begin(f *os.File, color EColor, format string, a ...interface{}) {
 	fmt.Fprint(f, "\n")
 }
 
-// DoEnd formatter
+// DoEnd formatter.
 func DoEnd(f *os.File, cmd string, status bool, format string, a ...interface{}) {
 	col := 0
 

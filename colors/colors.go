@@ -1,6 +1,6 @@
 package colors
 
-// Colors constants
+// Colors constants.
 const (
 	ResetAll = "\033[0m"
 

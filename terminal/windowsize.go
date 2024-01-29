@@ -6,7 +6,7 @@ import (
 	"unsafe"
 )
 
-// WindowSize struct
+// WindowSize struct.
 type WindowSize struct {
 	Row    uint16
 	Col    uint16
@@ -14,13 +14,13 @@ type WindowSize struct {
 	Ypixel uint16
 }
 
-// GetWindowSize from term
+// GetWindowSize from term.
 func GetWindowSize(f *os.File) (*WindowSize, error) {
 	ws := &WindowSize{}
 
 	retCode, _, errno := syscall.Syscall(
 		syscall.SYS_IOCTL,
-		uintptr(f.Fd()),
+		f.Fd(),
 		uintptr(syscall.TIOCGWINSZ),
 		uintptr(unsafe.Pointer(ws)),
 	)
