@@ -25,6 +25,7 @@ func GetWindowSize(f *os.File) (*WindowSize, error) {
 		uintptr(unsafe.Pointer(ws)),
 	)
 
+	// nolint: gosec
 	if int(retCode) == -1 {
 		return nil, errno
 	}
